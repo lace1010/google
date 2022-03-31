@@ -15,7 +15,7 @@ import {
   MapIcon,
   DotsVerticalIcon,
 } from "@heroicons/react/outline";
-import SearchHeaderOption from "./searchHeaderOption";
+import SearchHeaderOption from "./SearchHeaderOption";
 
 const SearchHeader = ({ searchTerm }) => {
   const router = useRouter();
