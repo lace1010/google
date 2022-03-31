@@ -1,5 +1,4 @@
-import { STATES } from "mongoose";
-import { React, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const useGeoLocation = () => {
   const [location, setLocation] = useState({
