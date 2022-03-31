@@ -39,7 +39,7 @@ const HomeForm = () => {
         <button onClick={search} type="submit" className="formButtons">
           Google Search
         </button>
-        <button className="formButtons">I'm Feeling Lucky</button>
+        <button className="formButtons">I&apos;m Feeling Lucky</button>
       </div>
     </form>
   );
