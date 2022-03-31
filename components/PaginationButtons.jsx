@@ -4,16 +4,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
-const PaginationButtons = () => {
+const PaginationButtons = ({ searchTerm }) => {
   const router = useRouter();
   const startIndex = Number(router.query.start) || 0;
 
   return (
     <div className=" flex max-w-xl mb-5 justify-evenly lg:pl-44">
       {startIndex >= 10 ? (
-        <Link
-          href={`/search?term=${router.query.term}&start=${startIndex - 10}`}
-        >
+        <Link href={`/search?term=${searchTerm}&start=${startIndex - 10}`}>
           <div className="paginationButton">
             <ChevronLeftIcon className="h-7 w-7" />
             <p>Previous</p>
@@ -33,9 +31,7 @@ const PaginationButtons = () => {
         layout="fixed"
       />
 
-      <Link
-        href={`/search?term=${router.query.term}&start=${startIndex + 10} `}
-      >
+      <Link href={`/search?term=${searchTerm}&start=${startIndex + 10} `}>
         <div className="paginationButton">
           <ChevronRightIcon className="h-7 w-7" />
           <p>Next</p>

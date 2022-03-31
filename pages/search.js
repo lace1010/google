@@ -23,7 +23,7 @@ const Search = ({ results }) => {
       <SearchHeader searchTerm={searchTerm} />
       <SearchResults results={results} />
 
-      <PaginationButtons />
+      <PaginationButtons searchTerm={searchTerm} />
       <SearchFooter />
     </div>
   );
