@@ -1,12 +1,12 @@
 import { React } from "react";
-import useGeoLocation from "../util/useGeoLocation.js";
+// import useGeoLocation from "../util/useGeoLocation.js";
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 // import Geocode from "react-geocode";
 
 const SearchFooter = () => {
-  const location = useGeoLocation();
-  const lat = location.coordinates.lat;
-  const long = location.coordinates.long;
+  // const location = useGeoLocation();
+  // const lat = location.coordinates.lat;
+  // const long = location.coordinates.long;
 
   // WOULD WORK BUT NEED TO ENABLE BILLING ON GOOGLE CLOUD AND I DONT WANNA
   //   // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
