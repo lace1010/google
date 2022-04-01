@@ -13,7 +13,6 @@ const Search = ({ results }) => {
   const query = router.query;
   const searchTerm = [Object.keys(query)[0]][0];
 
-  // console.log(results);
   return (
     <div>
       <Head>
@@ -34,7 +33,6 @@ export default Search;
 export async function getServerSideProps(context) {
   const API_KEY = process.env.API_KEY;
   const CONTEXT_KEY = process.env.CONTEXT_KEY;
-  const searchTerm = [Object.keys(context.query)[0]][0];
   const startIndex = context.query.start || "0";
 
   // using dummmy data so we don't exceed api search limit. Get rid of dummy data when finished
@@ -42,7 +40,7 @@ export async function getServerSideProps(context) {
   const data = useDummyData
     ? Response
     : await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${searchTerm}&start=${startIndex}`
+        `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${context.query.term}&start=${startIndex}`
       ).then((res) => res.json());
 
   return {

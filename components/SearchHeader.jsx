@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { React, useState } from "react";
+import { React, useRef } from "react";
 import { useRouter } from "next/router";
 import {
   ViewGridIcon,
@@ -17,13 +17,15 @@ import {
 } from "@heroicons/react/outline";
 import SearchHeaderOption from "./SearchHeaderOption";
 
-const SearchHeader = ({ searchTerm }) => {
+const SearchHeader = () => {
   const router = useRouter();
-  const [term, setTerm] = useState(searchTerm);
+  const searchInputRef = useRef(null);
+  const defaultTerm = router.query.term;
 
   const search = (e) => {
     e.preventDefault();
-    term ? router.push(`/search?${term}`) : "";
+    const term = searchInputRef.current.value;
+    term ? router.push(`/search?term=${term}`) : "";
   };
 
   return (
@@ -43,12 +45,12 @@ const SearchHeader = ({ searchTerm }) => {
           <input
             className="flex-1 focus:outline-none cursor-pointer"
             type="text"
-            onChange={(e) => setTerm(e.target.value)}
-            value={term}
+            ref={searchInputRef}
+            defaultValue={defaultTerm}
           />
 
           <XIcon
-            onClick={() => setTerm("")}
+            onClick={() => (searchInputRef.current.value = "")}
             className="h-7 cursor-pointer text-gray-500"
           />
 

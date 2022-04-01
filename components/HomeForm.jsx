@@ -1,16 +1,19 @@
 import Image from "next/image";
-import { React, useState } from "react";
+import { React, useRef } from "react";
 import { SearchIcon } from "@heroicons/react/outline";
 import { MicrophoneIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 
 const HomeForm = () => {
   const router = useRouter();
-  const [term, setTerm] = useState(null);
+  const searchInputRef = useRef();
+
+  // try to figure out this google term logic tomorrow
 
   const search = (e) => {
     e.preventDefault();
-    term ? router.push(`/search?${term}`) : "";
+    const term = searchInputRef.current.value;
+    term ? router.push(`/search?term=${term}`) : "";
   };
 
   return (
@@ -27,7 +30,7 @@ const HomeForm = () => {
       <div className="w-full flex items-center px-5 py-3 mt-5 max-w-md sm:max-w-xl lg:max-w-2xl hover:shadow-lg focus-within:shadow-lg rounded-full border border-gray-200">
         <SearchIcon className="h-5 mr-3 text-gray-500" />
         <input
-          onChange={(e) => setTerm(e.target.value)}
+          ref={searchInputRef}
           className="flex-grow focus:outline-none"
           type="text"
           placeholder=""
